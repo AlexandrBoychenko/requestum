@@ -8,15 +8,16 @@ html, body, div, section, article, p, blockquote, ul, li, span{
 }
 
 /*Fonts*/
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@font-face {
+  font-family: Myriad Pro;
+  src: url(fonts/8143.otf);
+}
 
 a {
   text-decoration: none;
   cursor: pointer;
-  font-family: Roboto;
-  font-size: 12px;
-  font-weight: 500;
-  color: #00adef;
 }
 
 img {
@@ -25,16 +26,7 @@ img {
 
 button {
   cursor: pointer;
-  border: none;
   outline: none;
-}
-
-.center {
-  text-align: center;
-}
-
-.wrapper {
-
 }
 
 h1, h2, h3, h4, h5, p {

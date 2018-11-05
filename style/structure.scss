@@ -1,0 +1,54 @@
+$main-border: 1px solid #efefef;
+
+.wrapper {
+  width: 100%;
+  padding: 0 15%;
+  background: #efeeee;
+}
+
+.main-container {
+  padding: 0 40px 92px;
+  background: #ffffff;
+}
+
+.items-container {
+  padding: 48px 0 73px;
+  text-align: center;
+
+  .items {
+    display: flex;
+    font-size: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .item {
+      min-width: 270px;
+      min-height: 425px;
+      background: green;
+      margin-bottom: 30px;
+    }
+  }
+  button.load-more {
+    font: 13px Myriad Pro, sans-serif;
+    text-transform: uppercase;
+    color: #ed1111;
+    width: 118px;
+    height: 36px;
+    border: $main-border;
+    background: #ffffff;
+    margin-top: 10px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+
+  .footer-item {
+    width: 370px;
+    height: 309px;
+    background: #ffffff;
+    border: $main-border;
+  }
+}
