@@ -1,0 +1,13 @@
+{
+  "name": "requestum",
+  "version": "0.0.1",
+  "dependencies" :
+    {
+      "sass": "1.14.3"
+    },
+  "scripts": {
+    "sass-compile": "sass style/main.scss style.css"
+  },
+  "author": "Alex",
+  "license": "MIT"
+}
