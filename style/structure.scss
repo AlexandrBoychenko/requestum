@@ -4,8 +4,14 @@
   background: #efeeee;
 }
 
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    padding: 0;
+  }
+}
+
 .main-container {
-  padding: 0 40px 92px;
+  padding: 0 40px 46px;
   background: #ffffff;
 }
 
@@ -18,6 +24,18 @@
     font-size: 0;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1700px) {
+    .items {
+      justify-content: space-evenly;
+    }
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .items {
+      justify-content: space-around;
+    }
   }
 
   button.load-more {
@@ -38,4 +56,10 @@
   flex-wrap: wrap;
   font-size: 0;
   background: #ffffff;
+}
+
+@media screen and (max-width: 1700px) {
+  .footer {
+    justify-content: space-around;
+  }
 }
