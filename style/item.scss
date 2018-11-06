@@ -1,0 +1,17 @@
+.item {
+  width: 270px;
+  height: 425px;
+  margin-bottom: 50px;
+  border: $main-border;
+
+  .item-image {
+    width: 250px;
+    height: 250px;
+    border: $main-border;
+
+    .badge-sale, .badge-new {
+      width: 70px;
+      height: 38px;
+    }
+  }
+}
