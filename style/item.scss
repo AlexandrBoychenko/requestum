@@ -2,16 +2,117 @@
   width: 270px;
   height: 425px;
   margin-bottom: 50px;
+  padding: 0 10px 11px;
   border: $main-border;
 
   .item-image {
+    position: relative;
     width: 250px;
     height: 250px;
+    margin: -20px auto 0;
     border: $main-border;
+    background: #ffffff;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
 
     .badge-sale, .badge-new {
+      position: absolute;
       width: 70px;
       height: 38px;
+      text-align: center;
+
+      span {
+        color: #ffffff;
+        text-transform: uppercase;
+        font: 13px Ubuntu, sans-serif;
+        line-height: 38px;
+      }
+    }
+
+    .badge-sale {
+      top: 116px;
+      left: 0;
+      background: #ed1111;
+    }
+
+    .badge-new {
+      top: 116px;
+      right: 0;
+      background: #000000;
+    }
+  }
+
+  h5, p {
+    text-align: left;
+  }
+
+  h5 {
+    padding: 18px 0;
+    color: #333333;
+    font: 14px Ubuntu, sans-serif;
+    line-height: 14px;
+  }
+
+  p {
+    padding-bottom: 23px;
+    padding-right: 25px;
+    color:#a5a4a4;
+    font: 11px Ubuntu, sans-serif;
+    line-height: 11px;
+  }
+
+  .prices {
+    padding-bottom: 30px;
+    text-align: left;
+
+    h2, h4 {
+      display: inline-block;
+      text-align: left;
+    }
+
+    h2 {
+      font: 25px Ubuntu, sans-serif;
+      line-height: 25px;
+      color: #333333;
+      margin-right: 18px;
+    }
+
+    h4 {
+      font: 17px Ubuntu, sans-serif;
+      line-height: 17px;
+      color: #ed1111;
+      text-decoration: line-through;
+    }
+  }
+
+  .item-buttons {
+    display: inline-block;
+    vertical-align: middle;
+
+    .item-btn {
+      width: 120px;
+      height: 38px;
+      font: 13px Ubuntu, sans-serif;
+      border: $main-border;
+      text-transform: uppercase;
+    }
+
+    .item-add-btn {
+      background: #ed8e8e;
+      color: #ed1111;
+      margin-right: 8px;
+    }
+
+    .item-view-btn {
+      background: #d9d9d9;
+      color: #999e9f;
     }
   }
 }
