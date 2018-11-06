@@ -118,8 +118,8 @@
 }
 
 .item:hover {
-  -webkit-box-shadow: 0 2px 7px 1px rgba(0,0,0,0.35);
-  -moz-box-shadow: 0 2px 7px 1px rgba(0,0,0,0.35);
-  box-shadow: 0 2px 7px 1px rgba(0,0,0,0.35);
+  -webkit-box-shadow: 0 2px 7px 0 rgba(0,0,0,0.35);
+  -moz-box-shadow: 0 2px 7px 0 rgba(0,0,0,0.35);
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.35);
   cursor: pointer;
 }
