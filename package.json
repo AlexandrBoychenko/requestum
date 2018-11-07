@@ -1,12 +1,14 @@
 {
   "name": "requestum",
   "version": "0.0.1",
-  "dependencies" :
-    {
-      "sass": "1.14.3"
-    },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "sass": "1.14.3"
+  },
   "scripts": {
-    "sass-compile": "sass style/main.scss style.css"
+    "sass-compile": "sass style/main.scss style.css",
+    "server-start": "cd d:\\server\\nginx && start start nginx.exe && d:\\server\\php7\\php-cgi.exe -b 127.0.0.1:9999",
+    "server-stop": "tskill nginx || tskill php-cgi"
   },
   "author": "Alex",
   "license": "MIT"
