@@ -6,13 +6,14 @@
   background: #ffffff;
   border: $main-border;
 
-  h3 {
+  .footer-item-header {
     font: 20px Raleway, sans-serif;
+    color: #000000;
     padding-bottom: 18px;
     text-transform: uppercase;
   }
 
-  > p {
+  .footer-item-description {
     font: 11px Ubuntu, sans-serif;
     color: #a5a4a4;
     line-height: 16px;
@@ -31,7 +32,7 @@
         margin-right: 10px;
       }
 
-      p {
+      .footer-list-text {
         font: 11px Ubuntu, sans-serif;
         color: #a5a4a4;
       }
@@ -56,8 +57,19 @@
       width: 70%;
     }
 
-    p {
+    .footer-list-text {
       margin-left: 4px;
     }
+  }
+}
+
+@media screen and (max-width: 1620px) {
+  .footer-item {
+    width: 303px;
+    height: 350px;
+  }
+
+  .footer-list-text {
+    width: 80%;
   }
 }

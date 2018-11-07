@@ -31,7 +31,7 @@
 							<?php endif; ?>
 						</div>
 						<div class="item-title"><?php echo $item[ 'title' ]; ?></div>
-						<p class="description"><?php echo $item[ 'description' ]; ?></p>
+						<div class="item-description"><?php echo $item[ 'description' ]; ?></div>
 						<div class="prices">							
 								<div class="price-actual">$<?php echo $item[ 'discountCost' ] ? $item[ 'discountCost' ] : $item[ 'cost' ]; ?></div>
 							<?php if ( $item[ 'discountCost' ] !== null ): ?>
@@ -49,92 +49,92 @@
         </div>
         <div class="footer">
             <div class="footer-item">
-                <h3>hot offers</h3>
-                <p>
+                <div class="footer-item-header">hot offers</div>
+                <div class="footer-item-description">
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Suspendisse
                     sollicitudin velit sed leo. Ut pharetra augue nec augue. Nam elit magna, hend.
-                </p>
+                </div>
                 <ul class="footer-list">
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
+                        <div class="footer-list-text">Vestibulum ante ipsum primis in faucibus orci luctus</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Nam elit magna hendrerit sit amet tincidunt ac</p>
+                        <div class="footer-list-text">Nam elit magna hendrerit sit amet tincidunt ac</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Quisque diam lorem interdum vitae dapibus ac scele</p>
+                        <div class="footer-list-text">Quisque diam lorem interdum vitae dapibus ac scele</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Donec eget tellus non erat lacinia fermentum</p>
+                        <div class="footer-list-text">Donec eget tellus non erat lacinia fermentum</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Donec in velit vel ipsum auctor pulvin</p>
+                        <div class="footer-list-text">Donec in velit vel ipsum auctor pulvin</div>
                     </li>
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>hot offers</h3>
-                <p>
+                <div class="footer-item-header">hot offers</div>
+                <div class="footer-item-description">
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Suspendisse
                     sollicitudin velit sed leo. Ut pharetra augue nec augue. Nam elit magna, hend.
-                </p>
+                </div>
                 <ul class="footer-list">
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
+                        <div class="footer-list-text">Vestibulum ante ipsum primis in faucibus orci luctus</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Nam elit magna hendrerit sit amet tincidunt ac</p>
+                        <div class="footer-list-text">Nam elit magna hendrerit sit amet tincidunt ac</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Quisque diam lorem interdum vitae dapibus ac scele</p>
+                        <div class="footer-list-text">Quisque diam lorem interdum vitae dapibus ac scele</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Donec eget tellus non erat lacinia fermentum</p>
+                        <div class="footer-list-text">Donec eget tellus non erat lacinia fermentum</div>
                     </li>
                     <li class="footer-list-item">
                         <img src="img/arrow-list.png" alt="" class="arrow-footer">
-                        <p>Donec in velit vel ipsum auctor pulvin</p>
+                        <div class="footer-list-text">Donec in velit vel ipsum auctor pulvin</div>
                     </li>
                 </ul>
             </div>
             <div class="footer-item">
-                <h3>Store information</h3>
+                <div class="footer-item-header">Store information</div>
                 <ul class="footer-list">
                     <li class="footer-list-item">
                         <div class="footer-img-list-container">
                             <img src="img/location.png" alt="" class="arrow-footer">
                         </div>
-                        <p>Company Inc., 8901 Marmora Road, Glasgow, D04 89GR</p>
+                        <div class="footer-list-text">Company Inc., 8901 Marmora Road, Glasgow, D04 89GR</div>
                     </li>
                     <li class="footer-list-item">
                         <div class="footer-img-list-container">
                             <img src="img/phone.png" alt="" class="arrow-footer">
                         </div>
-                        <p>Call us now toll free: (800) 2345-6789</p>
+                        <div class="footer-list-text">Call us now toll free: (800) 2345-6789</div>
                     </li>
                     <li class="footer-list-item">
                         <div class="footer-img-list-container">
                             <img src="img/mail.png" alt="" class="arrow-footer">
                         </div>
                         <div class="footer-inner-text">
-                            <p>Customer support: support@example.com</p>
-                            <p> Press: pressroom@example.com</p>
+                            <div class="footer-list-text">Customer support: support@example.com</div>
+                            <div class="footer-list-text">Press: pressroom@example.com</div>
                         </div>
                     </li>
                     <li class="footer-list-item">
                         <div class="footer-img-list-container">
                             <img src="img/skype.png" alt="" class="arrow-footer">
                         </div>
-                        <p>Skype: sample-username</p>
+                        <div class="footer-list-text">Skype: sample-username</div>
                     </li>
                 </ul>
             </div>
