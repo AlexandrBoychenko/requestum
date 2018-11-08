@@ -141,5 +141,6 @@
         </div>
     </div>
 </div>
+<script src="scripts/loadItems.js"></script>
 </body>
 </html>
