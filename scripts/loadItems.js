@@ -2,14 +2,20 @@ class Items {
     constructor() {
         this.itemsContainer = document.querySelector('.items');
         this.itemSample = document.querySelector('.item');
-        this.setItems();
+        this.pageCount = 1;
 
-        let loadMoreBtn = document.querySelector('.load-more');
-        loadMoreBtn.addEventListener('click', this.userEvent.bind(this));
+        this.loadMoreBtn = document.querySelector('.load-more');
+        this.loadMoreBtn.addEventListener('click', this.userEvent.bind(this));
+
+        this.setItems();
     }
 
     setItems() {
         this.getItems().then((items) => {
+            if (!items.entities.length) {
+                this.loadMoreBtn.setAttribute('style', 'display: none');
+                return false;
+            }
             items.entities.forEach((item) => {
 
                 let title = item.title;
@@ -32,7 +38,7 @@ class Items {
                 this.newItem.setAttribute('style', 'display: none');
                 this.itemsContainer.appendChild(this.newItem);
             })
-        })
+        });
     }
 
     badgeHandler(isNew) {
@@ -82,13 +88,16 @@ class Items {
 
         hiddenItems.forEach((item) => {
             item.setAttribute('style', 'display: block');
-        })
+        });
+        this.pageCount++;
+        this.setItems();
     }
 
     getItems() {
         let xhr = new XMLHttpRequest();
+        let param;
 
-        xhr.open('GET', '/list.php', true);
+        xhr.open('GET', `/list.php?page=${this.pageCount}`, true);
         xhr.send();
 
         return new Promise ((res, rej) => {
