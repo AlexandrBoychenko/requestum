@@ -5,7 +5,7 @@ class Items {
         this.setItems();
 
         let loadMoreBtn = document.querySelector('.load-more');
-        loadMoreBtn.addEventListener('click', this.userEvent().bind(this));
+        loadMoreBtn.addEventListener('click', this.userEvent.bind(this));
     }
 
     setItems() {
@@ -29,7 +29,7 @@ class Items {
                 this.coastHandler(discountCost, cost);
                 this.badgeHandler(isNew);
 
-                this.itemsContainer.setAttribute('style', 'display: block');
+                this.newItem.setAttribute('style', 'display: none');
                 this.itemsContainer.appendChild(this.newItem);
             })
         })
@@ -77,6 +77,14 @@ class Items {
         }
     }
 
+    userEvent() {
+        let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
+
+        hiddenItems.forEach((item) => {
+            item.setAttribute('style', 'display: block');
+        })
+    }
+
     getItems() {
         let xhr = new XMLHttpRequest();
 
@@ -95,11 +103,4 @@ class Items {
     }
 }
 
-
 new Items();
-
-
-
-
-
-//console.log(getItems().then((resp) => {console.log(resp)}));
