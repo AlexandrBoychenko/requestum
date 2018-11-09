@@ -3,19 +3,43 @@ class Items {
         this.itemsContainer = document.querySelector('.items');
         this.itemSample = document.querySelector('.item');
         this.pageCount = 1;
+        this.countItems = 0;
 
         this.loadMoreBtn = document.querySelector('.load-more');
         this.loadMoreBtn.addEventListener('click', this.userEvent.bind(this));
 
+        this.addGetStateMethod();
         this.setItems();
     }
 
-    setItems() {
-        this.getItems().then((items) => {
-            if (!items.entities.length) {
-                this.loadMoreBtn.setAttribute('style', 'display: none');
-                return false;
+    addGetStateMethod() {
+        Promise.prototype.getState = function() {
+            if (!this.state) {
+                this.state = 'pending';
             }
+            let currentThis = this;
+            this.then((resolved) => {
+                currentThis.state = 'resolved';
+                return resolved;
+            },
+                (rejected) => {
+                    currentThis.state = 'rejected';
+                    return rejected;
+                });
+            return currentThis.state;
+        }
+    }
+
+    setItems() {
+        if (this.totalItems === this.countItems) {
+            this.loadMoreBtn.setAttribute('style', 'display: none');
+            return false;
+        }
+
+        this.getItems().then((items) => {
+            this.totalItems = items.total;
+            this.countItems += items.entities.length;
+
             items.entities.forEach((item) => {
 
                 let title = item.title;
@@ -32,7 +56,7 @@ class Items {
                 this.newItem.querySelector('.item-description').description = title;
                 this.newItem.querySelector('.item-image > img').setAttribute('src', `${itemImg}`);
 
-                this.coastHandler(discountCost, cost);
+                this.costHandler(discountCost, cost);
                 this.badgeHandler(isNew);
 
                 this.newItem.setAttribute('style', 'display: none');
@@ -53,7 +77,7 @@ class Items {
         }
     }
 
-    coastHandler(discountCost, cost) {
+    costHandler(discountCost, cost) {
         let pricePast = this.newItem.querySelector('.price-past');
         let pricesDiv = this.newItem.querySelector('.prices');
 
@@ -84,6 +108,7 @@ class Items {
     }
 
     userEvent() {
+        this.getJSON.getState() === 'pending' ? this.addLoader() : null;
         let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
 
         hiddenItems.forEach((item) => {
@@ -93,6 +118,12 @@ class Items {
         this.setItems();
     }
 
+    addLoader() {
+        let loader = document.createElement('img');
+        loader.setAttribute('src', 'img/spinner.gif');
+        document.insertBefore(loader, this.loadMoreBtn);
+    }
+
     getItems() {
         let xhr = new XMLHttpRequest();
         let param;
@@ -100,7 +131,7 @@ class Items {
         xhr.open('GET', `/list.php?page=${this.pageCount}`, true);
         xhr.send();
 
-        return new Promise ((res, rej) => {
+        this.getJSON = new Promise ((res, rej) => {
             xhr.onreadystatechange = function() {
                 if (xhr.status !== 200) {
                     rej(new Error('Response for items JSON is not correct'));
@@ -108,7 +139,8 @@ class Items {
                     res(JSON.parse(xhr.responseText));
                 }
             };
-        })
+        });
+        return this.getJSON;
     }
 }
 
