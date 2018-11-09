@@ -6,8 +6,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Test quiz</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,7 +33,7 @@
 						<div class="item-title"><?php echo $item[ 'title' ]; ?></div>
 						<div class="item-description"><?php echo $item[ 'description' ]; ?></div>
 						<div class="prices">							
-								<div class="price-actual">$<?php echo $item[ 'discountCost' ] ? $item[ 'discountCost' ] : $item[ 'cost' ]; ?></div>
+                            <div class="price-actual">$<?php echo $item[ 'discountCost' ] ? $item[ 'discountCost' ] : $item[ 'cost' ]; ?></div>
 							<?php if ( $item[ 'discountCost' ] !== null ): ?>
 								<div class="price-past">$<?php echo $item[ 'cost' ]; ?></div>
 							<?php endif; ?>

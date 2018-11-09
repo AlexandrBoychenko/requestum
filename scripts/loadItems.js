@@ -17,6 +17,10 @@ class Items {
             return false;
         }
 
+        this.addItems();
+    }
+
+    addItems() {
         this.getItems().then((items) => {
             this.totalItems = items.total;
             this.countItems += items.entities.length;
@@ -41,6 +45,7 @@ class Items {
                 this.badgeHandler(isNew);
 
                 this.newItem.setAttribute('style', 'display: none');
+                this.newItem.classList.add('loaded');
                 this.itemsContainer.appendChild(this.newItem);
             })
         });
@@ -52,9 +57,7 @@ class Items {
         if (!isNew && badgeNew) {
             this.imgAndBadgeContainer.removeChild(badgeNew);
         } else if (isNew && !badgeNew) {
-            let badgeSample = document.createElement('div');
-            badgeSample.innerText = 'new';
-            this.imgAndBadgeContainer.appendChild(badgeSample);
+            this.createDivElement(this.imgAndBadgeContainer, '', 'new');
         }
     }
 
@@ -66,15 +69,8 @@ class Items {
             this.newItem.querySelector('.price-actual').innerText = `${discountCost}`;
 
             if (!pricePast) {
-
-                let pricePastDiv = document.createElement('div');
-                pricePastDiv.setAttribute('class', 'price-past');
-                pricesDiv.appendChild(pricePastDiv);
-
-                let badgeSale = document.createElement('div');
-                badgeSale.setAttribute('class', 'badge-sale');
-                badgeSale.innerText = "sale";
-                this.imgAndBadgeContainer.appendChild(badgeSale);
+                this.createDivElement(pricesDiv, 'price-past');
+                this.createDivElement(this.imgAndBadgeContainer, 'badge-sale', 'sale');
             }
 
             this.newItem.querySelector('.price-past').innerText = `${cost}`;
@@ -88,20 +84,23 @@ class Items {
         }
     }
 
-    userEvent() {
-        let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
-        this.addLoader(hiddenItems);
+    createDivElement(parenrt, className, text) {
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', className);
+        text ? newDiv.innerText = text : null;
+        parenrt.appendChild(newDiv);
+    }
 
-        hiddenItems.forEach((item) => {
-            item.setAttribute('style', 'display: block');
-        });
+    userEvent() {
+        let hiddenItems = this.itemsContainer.querySelectorAll('.loaded[style="display: none"]');
+        this.addLoader(hiddenItems);
+        this.displayHiddenItems(hiddenItems);
         this.pageCount++;
         this.setItems();
     }
 
     addLoader() {
-        let items = this.itemsContainer.querySelectorAll('.item');
-        let loadedItem = items[items.length-1].hasAttribute('style');
+        let loadedItem = this.itemsContainer.querySelector('.loaded');
 
         if (!loadedItem) {
             let loader = document.createElement('img');
@@ -117,14 +116,18 @@ class Items {
                 let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
                 if (loadedItem) {
                     itemsField.removeChild(loader);
-
-                    hiddenItems.forEach((item) => {
-                        item.setAttribute('style', 'display: block');
-                    });
+                    this.displayHiddenItems(hiddenItems);
                     clearInterval(loadInterval);
                 }
             }, 1);
         }
+    }
+
+    displayHiddenItems(hiddenItems) {
+        hiddenItems.forEach((item) => {
+            item.setAttribute('style', 'display: block');
+            item.classList.add('fadein');
+        });
     }
 
     getItems() {
