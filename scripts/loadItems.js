@@ -8,26 +8,7 @@ class Items {
         this.loadMoreBtn = document.querySelector('.load-more');
         this.loadMoreBtn.addEventListener('click', this.userEvent.bind(this));
 
-        this.addGetStateMethod();
         this.setItems();
-    }
-
-    addGetStateMethod() {
-        Promise.prototype.getState = function() {
-            if (!this.state) {
-                this.state = 'pending';
-            }
-            let currentThis = this;
-            this.then((resolved) => {
-                currentThis.state = 'resolved';
-                return resolved;
-            },
-                (rejected) => {
-                    currentThis.state = 'rejected';
-                    return rejected;
-                });
-            return currentThis.state;
-        }
     }
 
     setItems() {
@@ -108,8 +89,8 @@ class Items {
     }
 
     userEvent() {
-        this.getJSON.getState() === 'pending' ? this.addLoader() : null;
         let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
+        this.addLoader(hiddenItems);
 
         hiddenItems.forEach((item) => {
             item.setAttribute('style', 'display: block');
@@ -119,9 +100,31 @@ class Items {
     }
 
     addLoader() {
-        let loader = document.createElement('img');
-        loader.setAttribute('src', 'img/spinner.gif');
-        document.insertBefore(loader, this.loadMoreBtn);
+        let items = this.itemsContainer.querySelectorAll('.item');
+        let loadedItem = items[items.length-1].hasAttribute('style');
+
+        if (!loadedItem) {
+            let loader = document.createElement('img');
+            loader.setAttribute('src', 'img/spinner.gif');
+            loader.setAttribute('class', 'spinner');
+
+            let itemsField = document.querySelector('.items-container');
+            itemsField.insertBefore(loader, itemsField.childNodes[2]);
+
+            let loadInterval = setInterval(() => {
+                let items = this.itemsContainer.querySelectorAll('.item');
+                let loadedItem = items[items.length-1].hasAttribute('style');
+                let hiddenItems = this.itemsContainer.querySelectorAll('[style="display: none"]');
+                if (loadedItem) {
+                    itemsField.removeChild(loader);
+
+                    hiddenItems.forEach((item) => {
+                        item.setAttribute('style', 'display: block');
+                    });
+                    clearInterval(loadInterval);
+                }
+            }, 1);
+        }
     }
 
     getItems() {
